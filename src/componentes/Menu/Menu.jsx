@@ -13,7 +13,10 @@ const Menu = props => {
                             <Link to="/cliente">Cliente</Link>
                         </li>
                         <li>
-                            <Link to="/home">Início</Link>
+                            <Link to="/venda">Venda</Link>
+                        </li>
+                        <li>
+                            <Link to="/produto">Produto</Link>
                         </li>
                     </ul>
                 </nav>

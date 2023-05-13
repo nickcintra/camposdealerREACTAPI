@@ -9,7 +9,7 @@ const Formulario = ({ user, setUser, setData }) => {
 
         const novoUsuario = {
             nome: user.nome,
-            cidade: user.cidade 
+            cidade: user.cidade
         }
 
         api
@@ -32,14 +32,39 @@ const Formulario = ({ user, setUser, setData }) => {
             });
     }
 
+    function mudandoNome(e) {
+        setUser(user => {
+            return { ...user, nome: e.target.value }
+        })
+    }
+
+    function mudandoCidade(e) {
+        setUser(user => {
+            return { ...user, cidade: e.target.value }
+        })
+    }
+
+
     return (
         <section className='formulario'>
             <form>
                 {user && <button onClick={() => setUser({})}>X</button>}
+                
                 <h2>Cadastro de Cliente</h2>
-                <CampoTexto label="Nome" value={user ? user.nome : ""} onChange={(e) => setUser(user =>{return{...user, nome: e.target.value}})} placeholder="Digite o seu nome" />
-                <CampoTexto label="Cidade" value={user ? user.cidade : ""} onChange={(e) => setUser(user =>{return{...user, cidade: e.target.value}})} placeholder="Digite sua Cidade" />
-                {user ? <Botao texto="Editar Cliente" onClick={alterarCliente}/> : <Botao texto="Criar Cliente" />}
+                <CampoTexto
+                    label="Nome"
+                    value={user ? user.nome : ""}
+                    onChange={mudandoNome}
+                    placeholder="Digite o seu nome"
+                />
+                <CampoTexto
+                    label="Cidade"
+                    value={user ? user.cidade : ""}
+                    onChange={mudandoCidade}
+                    placeholder="Digite sua Cidade"
+                />
+                
+                {user ? <Botao texto="Editar Cliente" onClick={alterarCliente} /> : <Botao texto="Criar Cliente" />}
             </form>
         </section>
     )
